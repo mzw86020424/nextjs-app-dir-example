@@ -6,11 +6,11 @@ const getArticle = async (slug: string) => {
     next: { revalidate: 60 },
   });
 
-  if (res.status == 404) {
+  if (res.status === 404) {
     notFound(); // not-found.tsxが表示される
   }
 
-  if(!res.ok) {
+  if (!res.ok) {
     throw new Error("Failed to fetch article");
   }
 
@@ -26,10 +26,10 @@ const getComments = async (slug: string) => {
     }
   );
 
-  if(!res.ok) {
+  if (!res.ok) {
     throw new Error("Failed to fetch comments");
   }
 
   const data = await res.json();
   return data as Comment[];
-}
+};
